@@ -1,0 +1,5 @@
+Google --> https://google.com
+Github --> https://github.com
+Facebook --> https://facebook.com
+Apple --> https://apple.com
+Apple Store --> https://apps.apple.com/

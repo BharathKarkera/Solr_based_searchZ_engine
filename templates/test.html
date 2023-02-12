@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+
+
+
+			<style>
+
+			body {
+
+			background-repeat: no-repeat;
+
+			background-attached: fixed;
+
+			background-size: cover;
+
+			background-image: url({{url_for('static',filename='img/background_image1.png')}});
+
+
+
+			}
+
+
+
+		</style>
+
+
+
+		<meta charset="UTF-8">
+
+		<title>Bharath</title>
+
+		<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+		<link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
+
+	</head>
+
+	<body>
+
+		<br>
+
+		<form action="search" method="post">
+
+			{% for message in get_flashed_messages() %}
+
+				<p> {{message}} </p>
+
+				<p> <table style='border:1px solid black;margin-left:auto;margin-right:auto;'><tr bgcolor=#FFF333 height=30px><th>Links</th></tr><tr bgcolor=#32CD32 height=30px><td  align ="left" ><p><a href=" https://github.com" target="_blank">Github </a> :  https://github.com </p></td></tr></table> </p>
+
+			{% endfor %}
+
+			<br>
+
+			<input type="text" name="search_parameter">
+
+			<br>
+
+			<input type="submit" value="SEARCH" id="search">
+
+		</form>
+
+	</body>
+
+</html>
+
+

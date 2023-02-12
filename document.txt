@@ -1,0 +1,6 @@
+name|URL
+Google|https://google.com
+Github|https://github.com
+Facebook|https://facebook.com
+Apple|https://apple.com
+AppleStore|https://apps.apple.com/

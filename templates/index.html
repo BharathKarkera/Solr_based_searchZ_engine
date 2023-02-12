@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+background-repeat: no-repeat;
+background-attached: fixed;
+background-size: cover;
+background-image: url({{url_for('static',filename='img/background_image2.png')}});
+
+}
+
+</style>
+
+<meta charset="UTF-8">
+<title>Bharath</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+       <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+         rel = "stylesheet">
+
+<link href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" rel="Stylesheet">
+<script src='https://cdn.rawgit.com/pguso/jquery-plugin-circliful/master/js/jquery.circliful.min.js'></script>
+<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js" ></script>
+<script src="https://code.jquery.com/jquery-migrate-3.0.0.min.js"></script>
+      <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+         rel = "stylesheet">
+<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+<link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
+</head>
+<body>
+   <div  class="background-image"></div>
+<br>
+<form action="search" method="post">
+{% for message in get_flashed_messages() %}
+<p> {{message}} </p>
+{% endfor %}
+<br>
+<input class="search-box"  name="search_parameter" placeholder="Solr"/>
+     <br>
+     <script>
+     $(document).ready(function() {
+
+
+     $('.search-box').on('keydown', function(e) {
+         console.log(e.key)
+         getAutocomplete();
+       }
+         )
+
+                }
+      )
+
+
+     function getAutocomplete() {
+
+
+     const query= $('.search-box').val();
+
+     async function foo() {
+       let obj;
+       const res = await fetch(`http://localhost:80/autopopulate?q=${encodeURIComponent(query)}`)
+
+       obj = await res.json();
+       console.log("inside fun: "+obj)
+
+       $( ".search-box" ).autocomplete({
+       delay: 0,
+           source: obj
+           });
+
+
+     }
+     foo()
+
+
+     }
+
+     </script>
+
+<br>
+<input type="submit" value="SEARCH" id="search">
+</form>
+</body>
+</html>
