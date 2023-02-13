@@ -4,10 +4,13 @@ import redis
 import pysolr
 import pprint
 import json
+import flask_cors
 
 app=flask.Flask(__name__)
 app.config["DEBUG"]=True
-app.secret_key="bharath"
+app.config["TOKEN"]="bharathkarkera"
+app.secret_key = 'bharathkarkera'
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 redis=redis.Redis(host='localhost',port=6379)
 
@@ -34,6 +37,7 @@ def greet():
     flask.flash("Showing results for : "+str(flask.request.form['search_parameter'])+"(  "+str(int(redis.get("hits")))+"th hit to the site !  )")
     return  flask.render_template("test.html"),{"Refresh":"10; url=http://localhost:80"}
 
+@flask_cors.cross_origin(origin='*',headers=['access-control-allow-origin','Content-Type'])
 @app.route("/autopopulate",methods=["GET","POST"])
 def auto_populate_fun():
     query=flask.request.args["q"].lower()
@@ -70,3 +74,5 @@ def auto_populate_fun():
 #rows=10
 #filtered_results=search_engine_collection.search(q,**{'rows':rows})
 #pprint.pprint(filtered_results.docs)
+#curl -i "http://bharathkarkera:80/autopopulate?q=git
+#
