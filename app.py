@@ -75,4 +75,4 @@ def auto_populate_fun():
 #filtered_results=search_engine_collection.search(q,**{'rows':rows})
 #pprint.pprint(filtered_results.docs)
 #curl -i "http://bharathkarkera:80/autopopulate?q=git
-#
+# curl -i "http://bharathkarkera:80/search" -d "search_parameter=MDN"
