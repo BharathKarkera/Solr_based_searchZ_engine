@@ -1,5 +1,15 @@
 # Solr_based_searchZ_engine
 
+
+```
+ 3:08PM @Bharath  ~ which -a python3
+python3: aliased to /usr/local/bin/python3
+/Library/Frameworks/Python.framework/Versions/3.9/bin/python3
+/usr/local/bin/python3
+/usr/bin/python3
+/opt/brew/bin/python3
+```
+
 Run below command to start the app:
 
 ```
